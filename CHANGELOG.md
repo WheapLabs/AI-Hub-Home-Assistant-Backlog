@@ -6,6 +6,11 @@ All notable changes to this project are listed here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Service field descriptions no longer contain brackets and braces, which
+  hassfest rejects as invalid placeholders.
+
 ### Added
 
 - Pull request template; the contributing guide describes the pull request
