@@ -1,0 +1,14 @@
+{
+  "domain": "backlog_aihub",
+  "name": "Backlog AI Hub",
+  "codeowners": ["@WheapLabs"],
+  "config_flow": true,
+  "documentation": "https://github.com/WheapLabs/AI-Hub-Home-Assistant-Backlog",
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/WheapLabs/AI-Hub-Home-Assistant-Backlog/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0"
+}
+

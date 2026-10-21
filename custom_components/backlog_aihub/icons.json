@@ -1,0 +1,14 @@
+{
+  "entity": {"sensor": {"a_traiter": {"default": "mdi:clipboard-list-outline"}}},
+  "services": {
+    "ajouter_tache": {"service": "mdi:clipboard-plus-outline"},
+    "ajouter_journal": {"service": "mdi:notebook-edit-outline"},
+    "cocher": {"service": "mdi:checkbox-marked-outline"},
+    "repondre": {"service": "mdi:reply-outline"},
+    "verifie": {"service": "mdi:magnify"},
+    "decision_traitee": {"service": "mdi:gavel"},
+    "supprimer": {"service": "mdi:delete-outline"},
+    "exporter": {"service": "mdi:export"}
+  }
+}
+

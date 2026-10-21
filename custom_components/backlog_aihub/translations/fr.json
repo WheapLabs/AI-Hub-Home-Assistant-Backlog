@@ -1,0 +1,327 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Backlog AI Hub",
+        "description": "Adresse de l'API Backlog de l'AI Hub (ex. https://hub.example/backlog-api, ou simplement l'adresse du hub) et le jeton du Backlog affiché dans la console du hub.",
+        "data": {
+          "url": "Adresse",
+          "api_token": "Jeton du Backlog",
+          "verify_ssl": "Vérifier le certificat TLS",
+          "ca_cert": "Fichier du certificat d'autorité (facultatif)"
+        },
+        "data_description": {
+          "ca_cert": "Chemin du certificat d'autorité du hub, ex. /config/aihub-ca.crt, quand le hub a sa propre autorité."
+        }
+      },
+      "reconfigure": {
+        "title": "Backlog AI Hub",
+        "data": {
+          "url": "Adresse",
+          "api_token": "Jeton du Backlog",
+          "verify_ssl": "Vérifier le certificat TLS",
+          "ca_cert": "Fichier du certificat d'autorité (facultatif)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Backlog AI Hub",
+        "description": "Le hub a refusé le jeton. Colle le jeton du Backlog actuel.",
+        "data": {
+          "api_token": "Jeton du Backlog"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Adresse http(s) invalide.",
+      "invalid_auth": "Le hub a refusé ce jeton.",
+      "cannot_connect": "Impossible de joindre le service Backlog du hub à cette adresse (ou son certificat n'est pas reconnu)."
+    },
+    "abort": {
+      "already_configured": "Déjà configuré.",
+      "single_instance_allowed": "Déjà configuré.",
+      "reauth_successful": "Jeton mis à jour.",
+      "reconfigure_successful": "Réglages mis à jour."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "a_traiter": {
+        "name": "À traiter",
+        "state_attributes": {
+          "demandes": {
+            "name": "Demandes"
+          },
+          "a_revoir": {
+            "name": "Pas concluants"
+          },
+          "a_verifier": {
+            "name": "À vérifier"
+          },
+          "decisions": {
+            "name": "Décisions"
+          },
+          "maintenant": {
+            "name": "Maintenant"
+          },
+          "taches_ouvertes": {
+            "name": "Tâches ouvertes"
+          },
+          "rev": {
+            "name": "Révision"
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "not_loaded": {
+      "message": "Backlog AI Hub n'est pas configuré (ou le hub est injoignable)."
+    },
+    "refused": {
+      "message": "Le hub a refusé l'action : {message}"
+    },
+    "invalid_auth": {
+      "message": "Le hub a refusé le jeton : mets-le à jour dans l'intégration."
+    },
+    "cannot_connect": {
+      "message": "Hub injoignable : {message}"
+    }
+  },
+  "services": {
+    "ajouter_tache": {
+      "name": "Ajouter ou modifier une tâche",
+      "description": "Crée une tâche dans le Backlog de l'AI Hub, ou complète une tâche existante.",
+      "fields": {
+        "id": {
+          "name": "Identifiant",
+          "description": "Identifiant (ex. t-pile-faible). Un identifiant existant complète cette entrée."
+        },
+        "titre": {
+          "name": "Titre",
+          "description": "Titre court."
+        },
+        "prio": {
+          "name": "Priorité",
+          "description": "maintenant, semaine, temps (quand on a le temps), attente, idee, fait."
+        },
+        "type": {
+          "name": "Type",
+          "description": "tester, reparer, decider, ranger, supprimer, idee."
+        },
+        "domaine": {
+          "name": "Domaine",
+          "description": "Thème principal (ex. Appareils, Climat)."
+        },
+        "domaines": {
+          "name": "Autres domaines",
+          "description": "Thèmes supplémentaires."
+        },
+        "action": {
+          "name": "Action",
+          "description": "Ce qu'il faut faire, en une phrase."
+        },
+        "detail": {
+          "name": "Détail",
+          "description": "Explication plus longue."
+        },
+        "dire": {
+          "name": "Prompt court",
+          "description": "Une phrase courte à dire à un agent."
+        },
+        "prompt": {
+          "name": "Prompt long",
+          "description": "Un prompt complet pour un agent."
+        },
+        "demande": {
+          "name": "Demande",
+          "description": "La demande d'origine, montrée sur la carte."
+        },
+        "rapide": {
+          "name": "Quick Win",
+          "description": "Tâche courte, sans rien à attendre."
+        },
+        "moment": {
+          "name": "Moment",
+          "description": "Quand le faire : {date, heure, note}."
+        },
+        "options": {
+          "name": "Options",
+          "description": "Choix proposés pour une décision."
+        },
+        "recommande": {
+          "name": "Recommandé",
+          "description": "L'option recommandée (texte exact)."
+        },
+        "recommande_pourquoi": {
+          "name": "Pourquoi",
+          "description": "Une phrase."
+        },
+        "items": {
+          "name": "Points",
+          "description": "Points à cocher : [{id, n, scenario?}]. Fusionnés par identifiant sauf « Remplacer les points »."
+        },
+        "scenarios": {
+          "name": "Scénarios",
+          "description": "[{id, titre, quand?, etapes[]}]."
+        },
+        "remplacer_items": {
+          "name": "Remplacer les points",
+          "description": "Remplacer toute la liste au lieu de fusionner."
+        },
+        "maquettes": {
+          "name": "Maquettes",
+          "description": "[{option, image, legende?}]."
+        },
+        "captures": {
+          "name": "Captures",
+          "description": "[{image, titre?, legende?}]."
+        },
+        "conditions": {
+          "name": "Conditions",
+          "description": "Conditions d'un test (voir la doc du hub)."
+        },
+        "ordre": {
+          "name": "Ordre",
+          "description": "Ordre de tri."
+        }
+      }
+    },
+    "ajouter_journal": {
+      "name": "Ajouter au journal",
+      "description": "Écrit une entrée au journal du Backlog.",
+      "fields": {
+        "id": {
+          "name": "Identifiant",
+          "description": "Identifiant (ex. t-pile-faible). Un identifiant existant complète cette entrée."
+        },
+        "titre": {
+          "name": "Titre",
+          "description": "Titre court."
+        },
+        "genre": {
+          "name": "Genre",
+          "description": "changement, decision, correction, constat."
+        },
+        "domaine": {
+          "name": "Domaine",
+          "description": "Thème principal (ex. Appareils, Climat)."
+        },
+        "domaines": {
+          "name": "Autres domaines",
+          "description": "Thèmes supplémentaires."
+        },
+        "date": {
+          "name": "Date",
+          "description": "Par défaut, aujourd'hui (fuseau du hub)."
+        },
+        "pourquoi": {
+          "name": "Pourquoi",
+          "description": "La raison."
+        },
+        "details": {
+          "name": "Détails",
+          "description": "Liste de lignes."
+        },
+        "entites": {
+          "name": "Entités",
+          "description": "Entités concernées."
+        },
+        "taches": {
+          "name": "Tâches",
+          "description": "Identifiants des tâches liées."
+        }
+      }
+    },
+    "cocher": {
+      "name": "Cocher",
+      "description": "Coche (ou décoche) des points ou des tâches entières.",
+      "fields": {
+        "ids": {
+          "name": "Points",
+          "description": "Points (ou « tache:<id> ») à cocher."
+        },
+        "fait": {
+          "name": "Fait",
+          "description": "Décoche si désactivé."
+        },
+        "par": {
+          "name": "Par",
+          "description": "Qui coche."
+        },
+        "pourquoi": {
+          "name": "Pourquoi",
+          "description": "La raison."
+        }
+      }
+    },
+    "repondre": {
+      "name": "Répondre à un « pas concluant »",
+      "description": "Répond à un point marqué « pas concluant ».",
+      "fields": {
+        "item": {
+          "name": "Point",
+          "description": "Identifiant du point."
+        },
+        "reponse": {
+          "name": "Réponse",
+          "description": "Réponse en mots simples."
+        }
+      }
+    },
+    "verifie": {
+      "name": "Répondre à une loupe 🔍",
+      "description": "Donne le résultat d'un point marqué « vérifie-le toi-même ».",
+      "fields": {
+        "item": {
+          "name": "Point",
+          "description": "Identifiant du point."
+        },
+        "resultat": {
+          "name": "Résultat",
+          "description": "confirme (coche le point), attente, contredit."
+        },
+        "preuve": {
+          "name": "Preuve",
+          "description": "Ce qui a été vu (heure, valeurs)."
+        }
+      }
+    },
+    "decision_traitee": {
+      "name": "Décision traitée",
+      "description": "Écrit la réponse à une décision donnée dans le Backlog.",
+      "fields": {
+        "cible": {
+          "name": "Cible",
+          "description": "Le point-question, ou la tâche quand elle n'en a pas."
+        },
+        "tache": {
+          "name": "Tâche",
+          "description": "Identifiant de la tâche (à la place de la cible)."
+        },
+        "reponse": {
+          "name": "Réponse",
+          "description": "Réponse en mots simples."
+        }
+      }
+    },
+    "supprimer": {
+      "name": "Supprimer",
+      "description": "Supprime une entrée d'une collection.",
+      "fields": {
+        "collection": {
+          "name": "Collection",
+          "description": "Où est l'entrée."
+        },
+        "id": {
+          "name": "Identifiant",
+          "description": "Identifiant (ex. t-pile-faible). Un identifiant existant complète cette entrée."
+        }
+      }
+    },
+    "exporter": {
+      "name": "Exporter",
+      "description": "Renvoie tout le Backlog (avec une variable de réponse).",
+      "fields": {}
+    }
+  }
+}

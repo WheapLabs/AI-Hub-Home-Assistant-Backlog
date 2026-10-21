@@ -1,0 +1,62 @@
+ajouter_tache:
+  fields:
+    id: {required: true, example: t-low-battery, selector: {text: {}}}
+    titre: {example: Replace the battery of the door sensor, selector: {text: {}}}
+    prio: {selector: {select: {options: [maintenant, semaine, temps, attente, idee, fait]}}}
+    type: {selector: {select: {options: [tester, reparer, decider, ranger, supprimer, idee]}}}
+    domaine: {example: Appareils, selector: {text: {}}}
+    domaines: {selector: {text: {multiple: true}}}
+    action: {selector: {text: {multiline: true}}}
+    detail: {selector: {text: {multiline: true}}}
+    dire: {selector: {text: {}}}
+    prompt: {selector: {text: {multiline: true}}}
+    demande: {selector: {text: {multiline: true}}}
+    rapide: {selector: {boolean: {}}}
+    moment: {example: '{date: 2026-10-02, heure: "06:40", note: in the morning}', selector: {object: {}}}
+    options: {selector: {text: {multiple: true}}}
+    recommande: {selector: {text: {}}}
+    recommande_pourquoi: {selector: {text: {}}}
+    items: {example: '[{id: t-low-battery-1, n: The sensor reports 100 %}]', selector: {object: {}}}
+    scenarios: {selector: {object: {}}}
+    remplacer_items: {default: false, selector: {boolean: {}}}
+    maquettes: {selector: {object: {}}}
+    captures: {selector: {object: {}}}
+    conditions: {selector: {object: {}}}
+    ordre: {selector: {number: {min: 0, max: 100000, mode: box}}}
+ajouter_journal:
+  fields:
+    id: {selector: {text: {}}}
+    titre: {example: Backup failed, selector: {text: {}}}
+    genre: {selector: {select: {options: [changement, decision, correction, constat]}}}
+    domaine: {example: Système, selector: {text: {}}}
+    domaines: {selector: {text: {multiple: true}}}
+    date: {selector: {date: {}}}
+    pourquoi: {selector: {text: {multiline: true}}}
+    details: {selector: {text: {multiple: true}}}
+    entites: {selector: {entity: {multiple: true}}}
+    taches: {selector: {text: {multiple: true}}}
+cocher:
+  fields:
+    ids: {required: true, selector: {text: {multiple: true}}}
+    fait: {default: true, selector: {boolean: {}}}
+    par: {example: home-assistant, selector: {text: {}}}
+    pourquoi: {selector: {text: {}}}
+repondre:
+  fields:
+    item: {required: true, selector: {text: {}}}
+    reponse: {required: true, selector: {text: {multiline: true}}}
+verifie:
+  fields:
+    item: {required: true, selector: {text: {}}}
+    resultat: {required: true, selector: {select: {options: [confirme, attente, contredit]}}}
+    preuve: {required: true, selector: {text: {multiline: true}}}
+decision_traitee:
+  fields:
+    cible: {selector: {text: {}}}
+    tache: {selector: {text: {}}}
+    reponse: {required: true, selector: {text: {multiline: true}}}
+supprimer:
+  fields:
+    collection: {required: true, selector: {select: {options: [taches, journal, fait, demandes, revoir, verifier, decisions]}}}
+    id: {required: true, selector: {text: {}}}
+exporter: {}

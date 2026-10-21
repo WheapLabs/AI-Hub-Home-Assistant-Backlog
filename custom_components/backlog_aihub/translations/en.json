@@ -1,0 +1,327 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Backlog AI Hub",
+        "description": "Address of the AI Hub's Backlog API (e.g. https://hub.example/backlog-api, or just the hub's address) and the Backlog token shown in the hub's console.",
+        "data": {
+          "url": "Address",
+          "api_token": "Backlog token",
+          "verify_ssl": "Verify the TLS certificate",
+          "ca_cert": "CA certificate file (optional)"
+        },
+        "data_description": {
+          "ca_cert": "Path of the hub's CA certificate, e.g. /config/aihub-ca.crt, when the hub uses its own certificate authority."
+        }
+      },
+      "reconfigure": {
+        "title": "Backlog AI Hub",
+        "data": {
+          "url": "Address",
+          "api_token": "Backlog token",
+          "verify_ssl": "Verify the TLS certificate",
+          "ca_cert": "CA certificate file (optional)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Backlog AI Hub",
+        "description": "The hub refused the token. Paste the current Backlog token.",
+        "data": {
+          "api_token": "Backlog token"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Not a valid http(s) address.",
+      "invalid_auth": "The hub refused this token.",
+      "cannot_connect": "Cannot reach the hub's Backlog service at this address (or its certificate is not trusted)."
+    },
+    "abort": {
+      "already_configured": "Already configured.",
+      "single_instance_allowed": "Already configured.",
+      "reauth_successful": "Token updated.",
+      "reconfigure_successful": "Settings updated."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "a_traiter": {
+        "name": "To process",
+        "state_attributes": {
+          "demandes": {
+            "name": "Requests"
+          },
+          "a_revoir": {
+            "name": "Not conclusive"
+          },
+          "a_verifier": {
+            "name": "To check"
+          },
+          "decisions": {
+            "name": "Decisions"
+          },
+          "maintenant": {
+            "name": "Now"
+          },
+          "taches_ouvertes": {
+            "name": "Open tasks"
+          },
+          "rev": {
+            "name": "Revision"
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "not_loaded": {
+      "message": "Backlog AI Hub is not set up (or the hub is unreachable)."
+    },
+    "refused": {
+      "message": "The hub refused the action: {message}"
+    },
+    "invalid_auth": {
+      "message": "The hub refused the token: update it in the integration."
+    },
+    "cannot_connect": {
+      "message": "Cannot reach the hub: {message}"
+    }
+  },
+  "services": {
+    "ajouter_tache": {
+      "name": "Add or update a task",
+      "description": "Creates a task in the AI Hub Backlog, or completes an existing one.",
+      "fields": {
+        "id": {
+          "name": "ID",
+          "description": "Identifier (e.g. t-low-battery). An existing ID completes that entry."
+        },
+        "titre": {
+          "name": "Title",
+          "description": "Short title."
+        },
+        "prio": {
+          "name": "Priority",
+          "description": "maintenant (now), semaine (this week), temps (when there is time), attente (waiting), idee (idea), fait (done)."
+        },
+        "type": {
+          "name": "Type",
+          "description": "tester (test), reparer (fix), decider (decide), ranger (tidy), supprimer (remove), idee (idea)."
+        },
+        "domaine": {
+          "name": "Domain",
+          "description": "Main theme (e.g. Appareils, Climat)."
+        },
+        "domaines": {
+          "name": "Other domains",
+          "description": "Extra themes."
+        },
+        "action": {
+          "name": "Action",
+          "description": "What has to be done, in one sentence."
+        },
+        "detail": {
+          "name": "Details",
+          "description": "Longer explanation."
+        },
+        "dire": {
+          "name": "Short prompt",
+          "description": "A short sentence to say to an agent."
+        },
+        "prompt": {
+          "name": "Long prompt",
+          "description": "A complete prompt for an agent."
+        },
+        "demande": {
+          "name": "Request",
+          "description": "The original request, shown on the card."
+        },
+        "rapide": {
+          "name": "Quick win",
+          "description": "Short task with nothing to wait for."
+        },
+        "moment": {
+          "name": "Moment",
+          "description": "When to do it: {date, heure, note}."
+        },
+        "options": {
+          "name": "Options",
+          "description": "Choices offered for a decision."
+        },
+        "recommande": {
+          "name": "Recommended",
+          "description": "The recommended option (exact text)."
+        },
+        "recommande_pourquoi": {
+          "name": "Why recommended",
+          "description": "One sentence."
+        },
+        "items": {
+          "name": "Items",
+          "description": "Checks: [{id, n, scenario?}]. Merged by ID unless « Replace items »."
+        },
+        "scenarios": {
+          "name": "Scenarios",
+          "description": "[{id, titre, quand?, etapes[]}]."
+        },
+        "remplacer_items": {
+          "name": "Replace items",
+          "description": "Replace the whole list of items instead of merging."
+        },
+        "maquettes": {
+          "name": "Mockups",
+          "description": "[{option, image, legende?}]."
+        },
+        "captures": {
+          "name": "Screenshots",
+          "description": "[{image, titre?, legende?}]."
+        },
+        "conditions": {
+          "name": "Conditions",
+          "description": "Live conditions of a test (see the hub's documentation)."
+        },
+        "ordre": {
+          "name": "Order",
+          "description": "Sort order."
+        }
+      }
+    },
+    "ajouter_journal": {
+      "name": "Add a journal entry",
+      "description": "Writes an entry in the Backlog journal.",
+      "fields": {
+        "id": {
+          "name": "ID",
+          "description": "Identifier (e.g. t-low-battery). An existing ID completes that entry."
+        },
+        "titre": {
+          "name": "Title",
+          "description": "Short title."
+        },
+        "genre": {
+          "name": "Kind",
+          "description": "changement (change), decision, correction (fix), constat (observation)."
+        },
+        "domaine": {
+          "name": "Domain",
+          "description": "Main theme (e.g. Appareils, Climat)."
+        },
+        "domaines": {
+          "name": "Other domains",
+          "description": "Extra themes."
+        },
+        "date": {
+          "name": "Date",
+          "description": "Defaults to today (the hub's time zone)."
+        },
+        "pourquoi": {
+          "name": "Why",
+          "description": "Reason."
+        },
+        "details": {
+          "name": "Details",
+          "description": "List of lines."
+        },
+        "entites": {
+          "name": "Entities",
+          "description": "Entities involved."
+        },
+        "taches": {
+          "name": "Tasks",
+          "description": "IDs of linked tasks."
+        }
+      }
+    },
+    "cocher": {
+      "name": "Check items",
+      "description": "Checks (or unchecks) items or whole tasks.",
+      "fields": {
+        "ids": {
+          "name": "Item IDs",
+          "description": "Items (or « tache:<task id> ») to check."
+        },
+        "fait": {
+          "name": "Done",
+          "description": "Uncheck when off."
+        },
+        "par": {
+          "name": "By",
+          "description": "Who checks it."
+        },
+        "pourquoi": {
+          "name": "Why",
+          "description": "Reason."
+        }
+      }
+    },
+    "repondre": {
+      "name": "Answer a « not conclusive »",
+      "description": "Answers an item marked « not conclusive ».",
+      "fields": {
+        "item": {
+          "name": "Item",
+          "description": "Item ID."
+        },
+        "reponse": {
+          "name": "Answer",
+          "description": "Plain-language answer."
+        }
+      }
+    },
+    "verifie": {
+      "name": "Answer a 🔍 check",
+      "description": "Gives the result of an item flagged « check it yourself ».",
+      "fields": {
+        "item": {
+          "name": "Item",
+          "description": "Item ID."
+        },
+        "resultat": {
+          "name": "Result",
+          "description": "confirme (confirmed, checks the item), attente (waiting), contredit (contradicted)."
+        },
+        "preuve": {
+          "name": "Proof",
+          "description": "What was seen (time, values)."
+        }
+      }
+    },
+    "decision_traitee": {
+      "name": "Mark a decision as handled",
+      "description": "Writes the answer to a decision given in the Backlog.",
+      "fields": {
+        "cible": {
+          "name": "Target",
+          "description": "The question item, or the task when it has no question."
+        },
+        "tache": {
+          "name": "Task",
+          "description": "Task ID (instead of the target)."
+        },
+        "reponse": {
+          "name": "Answer",
+          "description": "Plain-language answer."
+        }
+      }
+    },
+    "supprimer": {
+      "name": "Delete an entry",
+      "description": "Deletes one entry of a collection.",
+      "fields": {
+        "collection": {
+          "name": "Collection",
+          "description": "Where the entry is."
+        },
+        "id": {
+          "name": "ID",
+          "description": "Identifier (e.g. t-low-battery). An existing ID completes that entry."
+        }
+      }
+    },
+    "exporter": {
+      "name": "Export",
+      "description": "Returns the whole Backlog (use a response variable).",
+      "fields": {}
+    }
+  }
+}
