@@ -170,11 +170,11 @@
         },
         "maquettes": {
           "name": "Maquettes",
-          "description": "[{option, image, legende?}]."
+          "description": "Liste d’éléments avec option, image et légende facultative."
         },
         "captures": {
           "name": "Captures",
-          "description": "[{image, titre?, legende?}]."
+          "description": "Liste d’éléments avec image, titre et légende facultatifs."
         },
         "conditions": {
           "name": "Conditions",

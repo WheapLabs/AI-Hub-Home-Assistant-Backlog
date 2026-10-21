@@ -170,11 +170,11 @@
         },
         "maquettes": {
           "name": "Mockups",
-          "description": "[{option, image, legende?}]."
+          "description": "List of items with option, image and optional legende."
         },
         "captures": {
           "name": "Screenshots",
-          "description": "[{image, titre?, legende?}]."
+          "description": "List of items with image, optional titre and optional legende."
         },
         "conditions": {
           "name": "Conditions",
