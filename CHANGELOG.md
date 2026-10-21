@@ -4,6 +4,13 @@ All notable changes to this project are listed here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Pull request template; the contributing guide describes the pull request
+  title and the changelog entry.
+
 ## [0.1.0] - 2026-10-20
 
 ### Added

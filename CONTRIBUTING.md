@@ -11,11 +11,16 @@ Thanks for your interest! Issues and pull requests are welcome.
    this integration must not keep its own copy.
 4. Run both test suites (see *Development* in the [README](README.md)) and
    `ruff check .`.
-5. Update the [README](README.md), the [changelog](CHANGELOG.md) and both
+5. Add a line to the [changelog](CHANGELOG.md) under `## [Unreleased]`
+   (`Added`, `Changed`, `Fixed`…), and update the [README](README.md) and both
    translation files (`translations/en.json`, `translations/fr.json`, and
    `strings.json`) when you change a user-facing text.
-6. Bump `version` in `custom_components/backlog_aihub/manifest.json` for a
-   release.
+6. Give the pull request an English title `type(scope): summary`, 72
+   characters at most (`feat`, `fix`, `docs`, `refactor`, `chore`, `test`),
+   and fill in the [template](.github/pull_request_template.md).
+7. A release is its own pull request `chore(release): x.y.z`: it bumps
+   `version` in `custom_components/backlog_aihub/manifest.json` and turns
+   `[Unreleased]` into `[x.y.z] - <date>`.
 
 ## Privacy
 
